@@ -1,0 +1,86 @@
+<view class="mine-wrapper">
+
+	<view class="avatar-wrapper">
+		<view>
+			<view class="avatar">
+				<image style="border-radius:50%;" src="{{isShowUserName ? userInfo.avatarUrl:'/images/Me2.png'}}"></image>
+			</view>
+			<view class="text" wx:if="{{isShowUserName}}">
+				<text>{{userInfo.nickName}}</text>
+			</view>
+			<view class="text" wx:if="{{!isShowUserName}}">
+				<button type="primary" lang="zh_CN" bindtap="getUserProfile">登录</button>
+			</view>
+		</view>
+	</view>
+
+<!-- 天气卡片 -->
+<view class="wai"  >
+	<!-- <view class="head" hidden="true" style="display:{{hideview ? none : flex}};flex-direction: row;"> -->
+  <view class="head" >
+    <!-- 左侧 -->
+    <view class="left">
+      <image class="left-ima" src="/images/color-64/{{img}}.png"></image>
+      <view class="left-txt0">{{txt}} | 空气 : {{qlty}}</view>
+    </view>
+    <!-- 右侧 -->
+    <view class="right">
+      <view class="right-txt0">
+        <i class="iconfont icon-Iconly-Bold-Location"></i>
+        {{Province}}{{city}}·{{district}}
+      </view>
+      <view class="right-txt2">{{tmp}}°C</view>      
+      <view>体感温度：{{fl}}°C</view>
+      <view>相对湿度：{{hum}}%</view>
+    </view>
+  </view>
+	</view>
+
+	<view class="list-wrapper">
+		<view class="alllists">
+			<block wx:for="{{menuitems}}" wx:key="menu_for">
+				<navigator url="{{item.url}}" class="lists" wx:for-index="index" data-index='{{index}}' bindtap="empty">
+					<button class='content' open-type="#">
+						<view class="listimg">
+							<image src="{{item.icon}}"></image>
+						</view>
+						<view class="listtext">{{item.text}}</view>
+						<view class="arrows">
+							<image src="{{item.arrows}}"></image>
+						</view>
+					</button>
+				</navigator>
+				<!-- 分割线 -->
+				<view class="divLine"></view>
+			</block>
+		</view>
+	</view>
+
+	<view class="progress">
+		<view class="service">
+			<button open-type="contact">
+				<view class="ico">
+					<image src="/images/consult.png"></image>
+				</view>
+				<view class="progress_text">联系客服</view>
+				<view class="point">
+					<image src="/images/arrows.png"></image>
+				</view>
+			</button>
+		</view>
+		<view class="divLine"></view>
+		<view class="feedback">
+			<button open-type="feedback">
+				<view class="ico">
+					<image src="/images/feedback.png"></image>
+				</view>
+				<view class="progress_text">意见反馈</view>
+				<view class="point">
+					<image src="/images/arrows.png"></image>
+				</view>
+			</button>
+		</view>
+		<view class="divLine"></view>
+	</view>
+
+</view>
